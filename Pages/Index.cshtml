@@ -1,0 +1,25 @@
+﻿@page
+@model MovieScheduleApp.Pages.IndexModel
+@{
+    ViewBag.Title = "Главная";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="movie-list">
+    <h1>Список фильмов</h1>
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+            <li class="movie-item">
+                <h2>@movie.Title</h2>
+                <ul class="sessions">
+                    @foreach (var session in movie.Sessions)
+                    {
+                        <li>@session</li>
+                    }
+                </ul>
+                <button onclick="location.href='/Info?id=@movie.Id'">Подробнее о фильме</button>
+            </li>
+        }
+    </ul>
+</div>

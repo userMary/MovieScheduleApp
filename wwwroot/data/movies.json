@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Title": "Inception",
+    "Director": "Christopher Nolan",
+    "Genre": "Sci-Fi",
+    "Description": "A skilled thief is given a chance at redemption if he can successfully perform an inception.",
+    "Sessions": [ "10:00 AM", "3:00 PM", "8:00 PM" ]
+  },
+  {
+    "Id": 2,
+    "Title": "Titanic",
+    "Director": "James Cameron",
+    "Genre": "Romance/Drama",
+    "Description": "A tragic love story aboard the ill-fated R.M.S. Titanic.",
+    "Sessions": [ "12:00 PM", "6:00 PM", "9:00 PM" ]
+  },
+  {
+    "Id": 3,
+    "Title": "Avatar",
+    "Director": "James Cameron",
+    "Genre": "Sci-Fi/Adventure",
+    "Description": "A paraplegic marine is dispatched to the moon Pandora on a unique mission.",
+    "Sessions": [ "11:00 AM", "4:00 PM", "7:00 PM" ]
+  }
+]

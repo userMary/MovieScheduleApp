@@ -1,0 +1,20 @@
+﻿@page
+@model MovieScheduleApp.Pages.InfoModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="movie-details">
+    <h1>@Model.Movie.Title</h1>
+    <p><b>Режиссер:</b> @Model.Movie.Director</p>
+    <p><b>Жанр:</b> @Model.Movie.Genre</p>
+    <p><b>Описание:</b> @Model.Movie.Description</p>
+    <h2>Сеансы</h2>
+    <ul>
+        @foreach (var session in Model.Movie.Sessions)
+        {
+            <li>@session</li>
+        }
+    </ul>
+    <button onclick="location.href='/'">Назад</button>
+</div>
