@@ -7,7 +7,7 @@ namespace MovieScheduleApp.Pages
 {
     public class InfoModel : PageModel
     {
-        public Movie Movie { get; set; }
+        public Movie Movies { get; set; }
 
         public IActionResult OnGet(int id)
         {
@@ -15,8 +15,8 @@ namespace MovieScheduleApp.Pages
             var jsonData = System.IO.File.ReadAllText(jsonPath);
             var movies = JsonSerializer.Deserialize<List<Movie>>(jsonData);
 
-            Movie = movies?.FirstOrDefault(m => m.Id == id);
-            if (Movie == null)
+            Movies = movies?.FirstOrDefault(m => m.Id == id);
+            if (Movies == null)
             {
                 return RedirectToPage("/Index");
             }

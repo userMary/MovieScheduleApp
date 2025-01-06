@@ -19,7 +19,92 @@
                     }
                 </ul>
                 <button onclick="location.href='/Info?id=@movie.Id'">Подробнее о фильме</button>
+                <button onclick="location.href='@Url.Page("./Delete", new { id = movie.Id })'">Удалить кноппка новая</button>
+                <a asp-page="./Delete" asp-route-id="@movie.Id" class="btn btn-danger">Удалить ссылка а навая</a>
+
             </li>
         }
     </ul>
 </div>
+
+
+
+
+
+
+<h1>Список фильмов</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Режиссер</th>
+            <th>Стиль</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.Director</td>
+                <td>@movie.Genre</td>
+                <td>
+                    <a href="/Edit?id=@movie.Id&title=@movie.Title&director=@movie.Director&genre=@movie.Genre&description=@movie.Description&sessions=@string.Join(',', movie.Sessions)">Редактировать</a>
+                    <a href="/Delete?id=@movie.Id&title=@movie.Title">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<h1>Список фильмов</h1>
+
+<form method="get">
+    <input type="text" name="searchQuery" placeholder="Введите данные для поиска" value="@Model.SearchQuery" />
+    <button type="submit">Поиск</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Режиссер</th>
+            <th>Стиль</th>
+            <th>Описание</th>
+            <th>Сеансы</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model.FilteredMovies)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.Director</td>
+                <td>@movie.Genre</td>
+                <td>@movie.Description</td>
+                <td>@string.Join(", ", movie.Sessions)</td>
+                <td>
+                    <button onclick="location.href='/Edit?id=@movie.Id'">Редактировать</button>
+                    <a asp-page="./Edit" asp-route-id="@movie.Id">Редактировать</a>
+                    <a asp-page="./Delete" asp-route-id="@movie.Id">Удалить</a>
+                    <button onclick="location.href='/Delete?id=@movie.Id'">Удалить</button>
+                    <button onclick="location.href='@Url.Page("./Delete", new { id = movie.Id })'">Удалить кнопка новая</button>
+                    <a asp-page="./Delete" asp-route-id="@movie.Id" class="btn btn-danger">Удалить ссылка а новая</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

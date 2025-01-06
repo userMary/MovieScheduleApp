@@ -1,0 +1,68 @@
+﻿@page
+@model MovieScheduleApp.Pages.EditModel
+@{
+    ViewBag.Title = "Редактирование фильма";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Редактирование фильма</h1>
+
+@* <form method="post">
+    @Html.AntiForgeryToken()
+    <label>Название</label>
+    <input type="text" asp-for="Movie.Title" />
+    <span asp-validation-for="Movie.Title" class="text-danger"></span>
+
+    <label>Режиссер</label>
+    <input type="text" asp-for="Movie.Director" />
+    <span asp-validation-for="Movie.Director" class="text-danger"></span>
+
+    <label>Стиль</label>
+    <input type="text" asp-for="Movie.Genre" />
+    <span asp-validation-for="Movie.Genre" class="text-danger"></span>
+
+    <label>Описание</label>
+    <textarea asp-for="Movie.Description"></textarea>
+    <span asp-validation-for="Movie.Description" class="text-danger"></span>
+
+    <label>Сеансы (через запятую)</label>
+    <input type="text" asp-for="Movie.SessionsAsString" />
+    <span asp-validation-for="Movie.SessionsAsString" class="text-danger"></span>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <button onclick="location.href='/'" class="btn btn-secondary">Отмена</button>
+</form> *@
+
+
+<form id="edit-form" action="/Edit" method="post">
+    <input type="hidden" id="movie-id" name="Id" value="@Model.Movie.Id">
+
+    <label for="title">Название</label>
+    <input type="text" id="title" name="Title" value="@Model.Movie.Title">
+
+    <label for="director">Режиссер</label>
+    <input type="text" id="director" name="Director" value="@Model.Movie.Director">
+
+    <label for="genre">Стиль</label>
+    <input type="text" id="genre" name="Genre" value="@Model.Movie.Genre">
+
+    <label for="description">Описание</label>
+    <textarea id="description" name="Description" value="@Model.Movie.Description"></textarea>
+
+    <label for="sessions">Сеансы (через запятую)</label>
+    <input type="text" id="sessions" name="Sessions" value="@Model.Movie.Sessions">
+
+    <button type="submit">Сохранить</button>
+    <button type="button" class="cancel" onclick="window.location.href='/';">Отмена</button>
+</form>
+
+<script>
+    // Устанавливаем значения в форме
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('movie-id').value = urlParams.get('id');
+    document.getElementById('title').value = urlParams.get('title');
+    document.getElementById('director').value = urlParams.get('director');
+    document.getElementById('genre').value = urlParams.get('genre');
+    document.getElementById('description').value = urlParams.get('description');
+    document.getElementById('sessions').value = urlParams.get('sessions');
+</script>

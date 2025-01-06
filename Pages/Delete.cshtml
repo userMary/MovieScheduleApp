@@ -1,0 +1,43 @@
+﻿@page
+@model MovieScheduleApp.Pages.DeleteModel
+@{
+    ViewBag.Title = "Удаление фильма";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* @page "{id:int}" *@
+<h1>Удаление фильма</h1>
+
+@* <p>Вы уверены, что хотите удалить фильм "@Model.Movie.Title"?</p>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit">Удалить</button>
+    <a asp-page="./Index">Отмена</a>
+    <button onclick="location.href='/'">НазадОтмена</button>
+    <button type="submit" class="btn btn-danger">Удалить новое</button>
+    <a asp-page="./Index" class="btn btn-secondary">Отмена новое</a>
+</form> *@
+
+<h1>Удаление фильма</h1>
+<p>Вы уверены, что хотите удалить фильм "<span id="movie-title"></span>"?</p>
+
+<form method="post" id="delete-form" action="/Delete">
+    <input type="hidden" id="movie-id" name="Id" value="@Model.Movie.Id">
+    <button type="submit">Удалить</button>
+    <button type="button" class="cancel" onclick="window.location.href='/';">Отмена</button>
+</form>
+
+<script>
+    // Устанавливаем значения для скрытого поля
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const title = urlParams.get('title');
+
+    if (id && title) {
+        document.getElementById('movie-id').value = id;
+        document.getElementById('movie-title').textContent = title;
+    } else {
+        console.error("ID или Title отсутствуют в параметрах URL");
+    }
+</script>
