@@ -5,7 +5,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<div class="movie-list">
+@* <div class="movie-list">
     <h1>Список фильмов</h1>
     <ul>
         @foreach (var movie in Model.Movies)
@@ -19,20 +19,21 @@
                     }
                 </ul>
                 <button onclick="location.href='/Info?id=@movie.Id'">Подробнее о фильме</button>
-                <button onclick="location.href='@Url.Page("./Delete", new { id = movie.Id })'">Удалить кноппка новая</button>
-                <a asp-page="./Delete" asp-route-id="@movie.Id" class="btn btn-danger">Удалить ссылка а навая</a>
-
+                <a href="/Edit?id=@movie.Id&title=@movie.Title&director=@movie.
+                                    Director&genre=@movie.Genre&description=@movie.
+                                    Description&sessions=@string.Join(',', movie.Sessions)">Редактировать</a>
+                <a href="/Delete?id=@movie.Id&title=@movie.Title">Удалить</a>
             </li>
         }
     </ul>
-</div>
+</div> *@
 
 
 
 
 
 
-<h1>Список фильмов</h1>
+@* <h1>Список фильмов</h1>
 
 <table>
     <thead>
@@ -57,7 +58,7 @@
             </tr>
         }
     </tbody>
-</table>
+</table> *@
 
 
 
@@ -72,6 +73,10 @@
 <form method="get">
     <input type="text" name="searchQuery" placeholder="Введите данные для поиска" value="@Model.SearchQuery" />
     <button type="submit">Поиск</button>
+    <br />
+    <br />
+    <br />
+
 </form>
 
 <table>
@@ -89,20 +94,13 @@
         @foreach (var movie in Model.FilteredMovies)
         {
             <tr>
-                <td>@movie.Title</td>
-                <td>@movie.Director</td>
-                <td>@movie.Genre</td>
-                <td>@movie.Description</td>
-                <td>@string.Join(", ", movie.Sessions)</td>
+                <td><h2 style="text-align: center;">@movie.Title</h2></td>
+                <td>@movie.Director &nbsp;&nbsp;&nbsp;</td>
+                <td>@movie.Genre &nbsp;&nbsp;&nbsp;</td>
+                <td>@movie.Description &nbsp;&nbsp;&nbsp;</td>
+                <td>@string.Join(", ", movie.Sessions) &nbsp;&nbsp;&nbsp;</td>
                 <td>
-                    <button onclick="location.href='/Edit?id=@movie.Id'">Редактировать</button>
-                    <a asp-page="./Edit" asp-route-id="@movie.Id">Редактировать</a>
-                    <a asp-page="./Delete" asp-route-id="@movie.Id">Удалить</a>
-                    <button onclick="location.href='/Delete?id=@movie.Id'">Удалить</button>
-                    <button onclick="location.href='@Url.Page("./Delete", new { id = movie.Id })'">Удалить кнопка новая</button>
-                    <a asp-page="./Delete" asp-route-id="@movie.Id" class="btn btn-danger">Удалить ссылка а новая</a>
-
-
+                    <button onclick="location.href='/Info?id=@movie.Id'">Подробнее о фильме</button><br />
                 </td>
             </tr>
         }

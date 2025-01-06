@@ -52,7 +52,8 @@
     <label for="sessions">Сеансы (через запятую)</label>
     <input type="text" id="sessions" name="Sessions" value="@Model.Movie.Sessions">
 
-    <button type="submit">Сохранить</button>
+    @* <button type="submit" onclick=OnPost()>Сохранить</button> *@
+    <input type="submit" value="Сохранить" />
     <button type="button" class="cancel" onclick="window.location.href='/';">Отмена</button>
 </form>
 

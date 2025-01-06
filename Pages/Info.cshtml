@@ -5,6 +5,10 @@
 }
 
 <div class="movie-details">
+    <button onclick="location.href='/'">Назад</button>
+    <br />
+    <br />
+    <br />
     <h1>@Model.Movies.Title</h1>
     <p><b>Режиссер:</b> @Model.Movies.Director</p>
     <p><b>Жанр:</b> @Model.Movies.Genre</p>
@@ -16,8 +20,8 @@
             <li>@session</li>
         }
     </ul>
-    <button onclick="location.href='/Edit?id=@Model.Movies.Id'">Редактировать</button>
-    <button onclick="location.href='/Delete'">Удалить</button>
-    <button onclick="location.href='/'">Назад</button>
-    <a asp-page="./Edit" asp-route-id="@Model.Movies.Id">Редактировать</a>
+    @* <button onclick="location.href='/Edit'">Редактировать</button>
+    <button onclick="location.href='/Delete'">Удалить</button> *@
+    <a href="/Edit?id=@Model.Movies.Id&title=@Model.Movies.Title&director=@Model.Movies.Director&genre=@Model.Movies.Genre&description=@Model.Movies.Description&sessions=@string.Join(',', Model.Movies.Sessions)">Редактировать</a>
+    <a href="/Delete?id=@Model.Movies.Id&title=@Model.Movies.Title">Удалить</a>
 </div>

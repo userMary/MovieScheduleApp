@@ -18,28 +18,30 @@ namespace MovieScheduleApp.Pages
 
         [BindProperty]
         public Movie Movie { get; set; } = new();
-        public void OnGet(int id)
+        public void OnGet()
         {
             var movies = LoadMovies();
-            Movie = movies.FirstOrDefault(m => m.Id == id) ?? new Movie();
+            Movie = movies.FirstOrDefault(m => m.Id == Movie.Id) ?? new Movie();
         }
 
-        public IActionResult OnPost(int id)
+        public IActionResult OnPost()
         {
-            Console.WriteLine($"Удаление фильма с ID: {id}");
+            //Console.WriteLine($"Удаление фильма с ID: {id}");
 
-            if (id == 0)
-            {
-                Console.WriteLine("Ошибка: ID фильма отсутствует.");
-                return BadRequest("ID фильма отсутствует.");
-            }
+            //if (id == 0)
+            //{
+            //    Console.WriteLine("Ошибка: ID фильма отсутствует.");
+            //    return BadRequest("ID фильма отсутствует.");
+            //}
+
+
             // Загружаем фильмы из файла
             var movies = LoadMovies();
 
             // Ищем фильм по ID
-            var movieToRemove = movies.FirstOrDefault(m => m.Id == id);
-            if (movieToRemove == null)
-                return BadRequest();
+            var movieToRemove = movies.FirstOrDefault(m => m.Id == Movie.Id);
+            //if (movieToRemove == null)
+            //    return BadRequest();
             {
                 Console.WriteLine($"Найден фильм для удаления: {movieToRemove.Title}");
                 movies.Remove(movieToRemove); // Удаляем фильм из списка

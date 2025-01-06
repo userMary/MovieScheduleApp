@@ -18,11 +18,11 @@ namespace MovieScheduleApp.Pages
 
         [BindProperty]
         public Movie Movie { get; set; } = new();
-        public void OnGet(int id)
+        public void OnGet()
         {
             // Загрузить фильмы из JSON
             var movies = LoadMovies();
-            Movie = movies.FirstOrDefault(m => m.Id == id) ?? new Movie();
+            Movie = movies.FirstOrDefault(m => m.Id == Movie.Id) ?? new Movie();
         }
 
         public IActionResult OnPost(int id, string title, string director, string genre, string description, string sessions)

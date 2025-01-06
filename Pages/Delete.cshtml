@@ -6,7 +6,7 @@
 }
 
 @* @page "{id:int}" *@
-<h1>Удаление фильма</h1>
+@* <h1>Удаление фильма</h1> *@
 
 @* <p>Вы уверены, что хотите удалить фильм "@Model.Movie.Title"?</p>
 
@@ -28,6 +28,8 @@
     <button type="button" class="cancel" onclick="window.location.href='/';">Отмена</button>
 </form>
 
+
+
 <script>
     // Устанавливаем значения для скрытого поля
     const urlParams = new URLSearchParams(window.location.search);
@@ -41,3 +43,10 @@
         console.error("ID или Title отсутствуют в параметрах URL");
     }
 </script>
+
+@* <script>
+    // Проверяем отправку формы
+    document.getElementById('delete-form').onsubmit = function () {
+        console.log("Форма отправляется");
+    };
+</script> *@
